@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang='pt-br'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <link rel='stylesheet' href='style.css'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css'>
+    <script src='https://cdn.jsdelivr.net/npm/chart.js'></script>
+    <title>LibertaInvest - Carteira Inteligente</title>
+</head>
+<body>
+    <header>
+        <h1><i class='fas fa-wallet'></i> LibertaInvest</h1>
+        <p class='descricao-site'>LibertaInvest - Comece hoje a construir sua liberdade financeira.</p> 
+        <p> Este site ajuda você a calcular sua reserva de emergência, distribuir seus investimentos de forma inteligente e aprender sobre diferentes ativos financeiros. Conquiste seus objetivos, clique no botão abaixo e inicie sua jornada rumo a liberdade financeira.</p>
+        <button id='iniciarCarteira' onclick='iniciarCarteira()'><i class='fas fa-play'></i> Iniciar Carteira de Investimentos</button>
+    </header>
+
+    <main>
+        <section id='reserva-section' class='conteudo-nivel' style='display:none;'>
+            <h2>Calcule sua Reserva de Emergência</h2>
+            <p class='texto-explicativo'>A reserva de emergência é um valor guardado para cobrir imprevistos, como perda de emprego ou despesas inesperadas. Geralmente, recomenda-se ter entre 3 a 6 meses das suas despesas mensais.</p>
+            <label>Despesas mensais (R$): <input type='number' id='despesas' /></label><br>
+            <label>Meses desejados: <input type='number' id='meses' /></label><br>
+            <button onclick='calcularReserva()'><i class='fas fa-calculator'></i> Calcular Reserva</button>
+            <p id='resultado-reserva'></p>
+        </section>
+
+        <section id='investimentos-section' class='conteudo-nivel' style='display:none;'>
+            <h2>Informe o valor total que deseja investir</h2>
+            <p class='texto-explicativo'> Agora que você decidiu a sua reserva de emergência, vamos definir a distribuição dos valores em investimentos que servirão para construir sua liberdade financeira, digite o valor que deseja investir.</p>
+            <label>Valor total (R$): <input type='number' id='valor-investir' /></label><br>
+            <button onclick='distribuirInvestimentos()'><i class='fas fa-chart-pie'></i> Distribuir Investimentos</button>
+            <button onclick='limparInvestimento()'><i class='fas fa-undo'></i> Limpar</button>
+        </section>
+
+        <section id='grafico-section' style='display:none;' class='conteudo-nivel grafico-container'>
+            <h2>Distribuição da Carteira</h2>
+            <div class='grafico-tabela'>
+                <canvas id='graficoCarteira'></canvas>
+                <table id='tabela-valores'>
+                    <thead>
+                        <tr><th>Ativo</th><th>Valor (R$)</th></tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id='busca-section' class='conteudo-nivel' style='display:none;'>
+            <h2>Busca por Investimento</h2>
+            <p class='texto-explicativo'> Para saber mais sobre os investimentos acima, digite o nome na caixa.</p>
+            <input type='text' id='campo-busca' placeholder='Digite o nome do investimento (ex: Tesouro IPCA+, Ações)'>
+            <button onclick='buscarInvestimento()'><i class='fas fa-search'></i> Buscar</button>
+            <div id='resultado-busca'></div>
+        </section>
+    </main>
+
+    <script src='script.js'></script>
+</body>
+</html>
